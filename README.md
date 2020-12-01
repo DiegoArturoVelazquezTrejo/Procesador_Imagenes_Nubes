@@ -16,7 +16,8 @@ Mario Escobar Rosales (https://github.com/luismarioescobarrosales2000)
 
   Nuestro objetivo es calcular el índice de cobertura nubosa de una serie de fotografías con las siguientes características:
 
-  a)
+  a) Fotografía con dimensiones: 4,368 px x 2912 px
+  b) El cielo centrado en la imagen y con un radio de 1324 px.
 
 ### Requisitos para la ejecución correcta del programa:
   1) Versión Python3.0.0 en adelante.
@@ -29,7 +30,3 @@ Mario Escobar Rosales (https://github.com/luismarioescobarrosales2000)
 $ python3 src/Main.py [Ruta de la imagen] [Bandera opcional]
 ```
 La bandera opcional es -S y sirve para que el programa despliegue la imagen segmentada binariamente.
-
-----
-#### Proyecto 1
-  - Ordenador de lineas en un texto
