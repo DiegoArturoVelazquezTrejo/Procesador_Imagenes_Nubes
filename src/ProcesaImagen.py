@@ -16,9 +16,14 @@ Métodos:
     c) Método para aplicar thresholding.
     d) Método para la corrección de la iluminación en una imagen.
     e) Método para la corrección de la iluminación en una imagen (alternativa).
+    f) Método para convertir a HSL.
 
 '''
 class ProcesaImagen:
+
+    @staticmethod
+    def convierte_rgb(imagen):
+        return cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB)
 
     '''
     Método para disminuir el contraste de una imagen
@@ -58,6 +63,27 @@ class ProcesaImagen:
                 imagen[i][j] = np.matmul(YIQ, mat)
         return imagen
     '''
+    Método para cambiar los colores de RGB a HSL
+    @Param: Una imagen (CV2 OpenCV)
+    @Return: Imagen en espacio de color HSL.
+    '''
+
+    @staticmethod
+    def convierte_hls(imagen):
+        return cv2.cvtColor(imagen, cv2.COLOR_BGR2HLS)
+
+
+    '''
+    Método para cambiar los colores de RGB a HSV
+    @Param: Una imagen (CV2 OpenCV)
+    @Return: Imagen en espacio de color HSL.
+    '''
+    @staticmethod
+    def convierte_hsv(imagen):
+        return  cv2.cvtColor(imagen, cv2.COLOR_BGR2HSV)
+
+
+    '''
     Método para aplicar un threshold primario binario a una imagen
     @Param: Una imagen (CV2 OpenCV)
     @Return: imagen con el threshold aplicado
@@ -82,7 +108,7 @@ class ProcesaImagen:
         imagen = np.power(imagen, gamma).clip(0,255).astype(np.uint8)
         return imagen
     '''
-    Método que realiza una corrección de la iluminación en una imagen, alternativa.
+    Método que realiza una corrección de la iluminación en una imagen, alternativa.convirtiendo la imagena  hsv
     @Param: Una imagen (CV2 OpenCV)
     @Return: Una imagen en donde la luz blanca deja de ser tan intensa.
     '''
@@ -98,3 +124,12 @@ class ProcesaImagen:
         hsv_gamma = cv2.merge([hue, sat, val_gamma])
         imagen = cv2.cvtColor(hsv_gamma, cv2.COLOR_HSV2BGR)
         return imagen
+    '''
+    Método para aplicarle una máscara a una imagen
+    @Param: Máscara
+    @Param: Imagen (OpenCV)
+    @Return: imagen
+    '''
+    def aplica_mascar_img(mascara, imagen):
+        mascara_aplicada = cv2.bitwise_and(imagen, imagen, mask = mascara)
+        return mascara_aplicada
