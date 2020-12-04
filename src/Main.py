@@ -95,7 +95,12 @@ print("El índice de cobertura nubosa es: ", indice)
 # Mostramos la imagen
 if(bandera != None):
     cv2.imshow('Imagen Final', imagen)
-    nom_final = "-seg"+nombre_imagen
-    cv2.imwrite(nom_final, imagen)
+    nom_final = nombre_imagen.split(".")
+    nombre_im_seg = ""
+    for i in range(0, len(nom_final)-1):
+        nombre_im_seg += nom_final[i]
+    nombre_im_seg+="-seg"
+    nombre_im_seg+="."+nom_final[len(nom_final) -1]
+    cv2.imwrite(nombre_im_seg, imagen)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
